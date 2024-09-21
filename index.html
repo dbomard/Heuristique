@@ -1,1 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aide au désherbage</title>
+</head>
+
+<body>
+    <p>Année en cours :<span id="current-year"></span></p>
+    <label for="column0">Colonne de l'année N </label><select name="column0" id="column0"></select>
+    <p>Inclure les prêts des 
+        <span><input type="number" id="backyear" min="0" max="3" step="1" value="3" /></span>
+        dernières années </p>
+    <label for="column-1">Colonne de l'année N-1 </label><select name="column-1" id="column-1"></select>
+    <label for="column-2">Colonne de l'année N-2 </label><select name="column-2" id="column-2"></select>
+    <label for="column-3">Colonne de l'année N-3 </label><select name="column-3" id="column-3"></select>
+
+</body>
+
+</html>
