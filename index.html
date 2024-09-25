@@ -2,26 +2,40 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aide au désherbage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aide au désherbage</title>
 </head>
 
 <body>
-    <p>Année en cours :<span id="current-year"></span></p>
-    <div>Inclure les prêts des
-        <span><input type="number" id="back-years" min="0" max="3" step="1" value="3" /></span>
-        dernières années
-    </div>
-    <div><label for="column0">Colonne de l'année N </label><input type="text" id="column0" value="A"
-            placeholder="A" /></div>
-    <div><label for="column1">Colonne de l'année N-1 </label><input type="text" id="column1" value="B"
-            placeholder="B" /></div>
-    <div><label for="column2">Colonne de l'année N-2 </label><input type="text" id="column2" value="C"
-            placeholder="C" /></div>
-    <div><label for="column3">Colonne de l'année N-3 </label><input type="text" id="column3" value="D"
-            placeholder="D" /></div>
-
+        <section>
+                <p>Année N : <span id="current-year"></span></p>
+                <div>Inclure les prêts des
+                        <span><input type="number" id="back-years" min="0" max="3" step="1" value="3" /></span>
+                        dernières années
+                </div>
+                <div>
+                        Colonne de l'année N <input type="text" id="column0" value="A" />
+                </div>
+                <div>
+                        Colonne de l'année N-1 <input type="text" id="column1" value="B" />
+                </div>
+                <div>
+                        Colonne de l'année N-2 <input type="text" id="column2" value="C" />
+                </div>
+                <div>
+                        Colonne de l'année N-3 <input type="text" id="column3" value="D" />
+                </div>
+                <div>
+                        Colonne dernière année de prêt <input type="text" id="acq" value="E" />
+                </div>
+                <div>
+                        Colonne dernière année de prêt <input type="text" id="lent" value="F" />
+                </div>
+        </section>
+        <section>
+                Formule à coller dans Excel : <span id="formula"></span>
+        </section>
 </body>
 <script src="./js/script.js"></script>
 

@@ -1,0 +1,51 @@
+INDICE DE PERFORMANCE
+
+Ce système d’attribution de score a pour objectif d’identifier les documents les plus susceptibles d’être désherbés, en tenant compte des exigences suivantes :
+•	Pondérer le taux de rotation
+•	Isoler les documents les plus récemment acquis et leur éviter le pilon
+•	Préserver les longues traînes (documents intégrés à la base depuis longtemps mais qui continuent de sortir).
+•	Préserver les documents qui sont actuellement empruntés
+•	Désherber les documents qui ont été beaucoup empruntés mais ne le sont plus (souvent le cas des best-sellers et docs collant à l’actualité).
+•	Désherber les documents qui n’ont jamais été ou peu empruntés
+•	Reproduire le modèle dans le temps et sur chaque fonds
+•	Considérer un document dans le fonds auquel il appartient plutôt qu’à l’ensemble de la collection, tous les fonds n’étant pas égaux par ailleurs
+
+
+Formule 
+
+(P2017*0,5) + (P2018*1) + (50/(2019-20xx)) + (20/(2019-20xx) + (PC/(2019-20xx)))
+
+Prêts année N-1 coefficient 0,5 :	P2017 * 0,5
++
+Prêts année N coefficient 1 :	P2018 * 1
++
+(Coefficient diviseur 50 :	50
+/
+(Année N+1 :	2019
+-
+Année de création :	20xx))
++
+((Coefficient diviseur 20 :	20
+/
+(Année N+1 :	2019
+-
+Dernière année de prêt :	20xx))
++
+((Prêts cumulés :	PC
+/
+(Année N+1 :	2019
+-
+Année de création :	20xx))
+
+
+Remarques sur la formule
+
+•	Avec le coefficient 0,5, les prêts de l’année 2017 sont valorisés à la moitié de ceux de 2018
+•	Les prêts de l’année 2018 comptent plus que l’année 2017
+•	Le coefficient diviseur à 50 permet de valoriser les documents les plus récemment acquis, qui, s’ils n’ont jamais été empruntés ont au moins un score à 50 ; inversement, les documents les plus anciens sont moins valorisés
+•	Le coefficient diviseur à 20 permet de valoriser les documents les plus récemment empruntés afin de « repêcher » les plus anciens qui continueraient à être empruntés malgré leur âge
+•	Les prêts cumulés sont valorisés mais pondérés par l’âge des documents : plus un document est ancien, plus il est censé avoir été emprunté. A l’inverse, un document récent n’a pas pu être beaucoup emprunté, il est donc valorisé.
+•	La formule n’indiquera a priori jamais un score supérieur à 100 pour la lisibilité
+
+
+29/05/2018
