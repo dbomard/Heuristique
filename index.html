@@ -11,30 +11,36 @@
         <section>
                 <p>Année N : <span id="current-year"></span></p>
                 <div>Inclure les prêts des
-                        <span><input type="number" id="back-years" min="0" max="3" step="1" value="3" /></span>
+                        <span><input class="entry" type="number" id="back-years" min="0" max="3" step="1" value="3" /></span>
                         dernières années
                 </div>
                 <div>
-                        Colonne de l'année N <input type="text" id="column0" value="A" />
+                        Colonne nombre de prêts de l'année N <input class="entry" type="text" id="columnN0" value="G" />
                 </div>
                 <div>
-                        Colonne de l'année N-1 <input type="text" id="column1" value="B" />
+                        Colonne nombre de prêts de l'année N-1 <input class="entry" type="text" id="columnN1" value="H" />
+                </div>
+                <!-- <div>
+                        Colonne nombre de prêts de l'année N-2 <input class="entry" type="text" id="columnN2" value="C" />
                 </div>
                 <div>
-                        Colonne de l'année N-2 <input type="text" id="column2" value="C" />
+                        Colonne nombre de prêts de l'année N-3 <input class="entry" type="text" id="columnN3" value="D" />
                 </div>
                 <div>
-                        Colonne de l'année N-3 <input type="text" id="column3" value="D" />
+                        Colonne année d'acquisition <input class="entry" type="text" id="acq" value="E" />
+                </div> -->
+                <div>
+                        Colonne dernière année de prêt <input class="entry" type="text" id="lastLoan" value="F" />
                 </div>
                 <div>
-                        Colonne dernière année de prêt <input type="text" id="acq" value="E" />
+                        Colonne nombre de prêts cumulés <input class="entry" type="text" id="totalLoan" value="I" />
                 </div>
                 <div>
-                        Colonne dernière année de prêt <input type="text" id="lent" value="F" />
+                        Colonne date de saisie <input class="entry" type="text" id="recordYear" value="E" />
                 </div>
         </section>
         <section>
-                Formule à coller dans Excel : <span id="formula"></span>
+                Formule à coller dans Excel : <span id="formula"></span><button id="copy">Copier le texte</button>
         </section>
 </body>
 <script src="./js/script.js"></script>
