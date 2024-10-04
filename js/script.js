@@ -1,9 +1,6 @@
 function updateformula() {
   const columnN0 = document.querySelector("#columnN0");
   const columnN1 = document.querySelector("#columnN1");
-  // const columnN2 = document.querySelector("#columnN2");
-  // const columnN3 = document.querySelector("#columnN3");
-  // const acq = document.querySelector("#acq");
   const lastLoan = document.querySelector("#lastLoan");
   const totalLoan = document.querySelector("#totalLoan");
   const recordYear = document.querySelector("#recordYear");
@@ -14,7 +11,7 @@ function updateformula() {
   const text = `=${columnN0.value}2*1+\
 ${columnN1.value}2*0,5+\
 (50/(${nextYear}-SI(ANNEE(${recordYear.value}2)="";2010;ANNEE(${recordYear.value}2))))+\
-(20/(${nextYear}-SI(ANNEE(${lastLoan.value}2)="";2000;ANNEE(${lastLoan.value}2))))+\
+(20/(${nextYear}-SI(${lastLoan.value}2="";0;${lastLoan.value}2)))+\
 (${totalLoan.value}2/(${nextYear}-SI(ANNEE(${recordYear.value}2)="";2010;ANNEE(${recordYear.value}2))))`;
   formula.innerText = text;
 }
