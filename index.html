@@ -5,31 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aide au désherbage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <section id="entries">
-        <p>Année N : <span id="current-year"></span></p>
-        <div>
-            Colonne nombre de prêts de l'année N <input class="entry" type="text" id="columnN0" value="G" />
-        </div>
-        <div>
-            Colonne nombre de prêts de l'année N-1 <input class="entry" type="text" id="columnN1" value="H" />
-        </div>
-        <div>
-            Colonne dernière année de prêt <input class="entry" type="text" id="lastLoan" value="F" />
-        </div>
-        <div>
-            Colonne nombre de prêts cumulés <input class="entry" type="text" id="totalLoan" value="I" />
-        </div>
-        <div>
-            Colonne date de saisie <input class="entry" type="text" id="recordYear" value="E" />
-        </div>
-    </section>
-    <section id="results">
-        Formule à coller dans Excel : <span id="formula"></span><button id="copy">Copier le texte</button>
-    </section>
+    <main class="container">
+        <section id="entries">
+            <p>Année N : <span id="current-year"></span></p>
+            <label for="columnN0" role="group" class="grid">
+                Colonne nombre de prêts de l'année N :<input class="entry" type="text" id="columnN0" value="G" />
+            </label>
+            <label for="columnN1" role="group" class="grid">
+                Colonne nombre de prêts de l'année N-1 :<input class="entry" type="text" id="columnN1" value="H" />
+            </label>
+            <label for="lastLoan" role="group" class="grid">
+                Colonne dernière année de prêt :<input class="entry" type="text" id="lastLoan" value="F" />
+            </label>
+            <label for="totalLoan" role="group" class="grid">
+                Colonne nombre de prêts cumulés :<input class="entry" type="text" id="totalLoan" value="I" />
+            </label>
+            <label for="recordYear" role="group" class="grid">
+                Colonne date de saisie :<input class="entry" type="text" id="recordYear" value="E" />
+            </label>
+        </section>
+        <section id="results">
+            <article>
+                <label for="formula">
+                    <p>Formule à coller dans Excel :</p>
+                    <div id="formula">=<span class="formula-cell"
+                            data-tooltip="Coefficient 1 appliqué aux prêts de l’année N"></span>+<span
+                            class="formula-cell"
+                            data-tooltip="Coefficient 0.5 appliqué aux prêts de l’année N-1"></span>+<span
+                            class="formula-cell"
+                            data-tooltip="Valorisation des documents les plus récemment acquis"></span>+<span
+                            class="formula-cell"
+                            data-tooltip="Valorisation les documents les plus récemment empruntés"></span>+<span
+                            class="formula-cell"
+                            data-tooltip="Prêts cumulés valorisés mais pondérés par l’âge des documents"></span>
+                    </div>
+                    <br>
+                    <button id="copy" class="outline secondary">Copier la formule</button>
+            </article>
+        </section>
+    </main>
 </body>
 <script src="./js/script.js"></script>
 

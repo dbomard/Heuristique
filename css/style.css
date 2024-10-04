@@ -1,0 +1,12 @@
+.formula-cell:hover {
+    color: red;
+    /* cursor: help; */
+}
+
+.entry {
+    max-width: 3em;
+}
+
+.grid {
+    align-items: center;
+}
