@@ -5,13 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aide au désherbage</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <main class="container">
-        <section id="entries">
+        <section id="V2">
+            <div class="row my-3 d-inline-flex align-items-center">
+                <!-- <div class="col">
+                    <input type="checkbox" id="activation" title="cocher pour activer ce paramètre" />
+                </div> -->
+                <div class="col-auto">
+                    <label class="form-label">titre paramètre</label>
+                </div>
+                <div class="col-auto">
+                    <label class="form-label" for="column">colonne : </label>
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" type="text" id="column" value="A"
+                        title="lettre de la colonne correspondant au paramètre" />
+                </div>
+                <div class="col">
+                    <input class="form-range" type="range" id="slider" title="poids du paramètre dans le score global"
+                        min="0" max="10" />
+                </div>
+            </div>
+        </section>
+        <!-- <section id="entries">
             <p>Année N : <span id="current-year"></span></p>
             <label for="columnN0" role="group" class="grid">
                 Colonne nombre de prêts de l'année N :<input class="entry" type="text" id="columnN0" value="H" />
@@ -28,8 +50,8 @@
             <label for="recordYear" role="group" class="grid">
                 Colonne date de saisie :<input class="entry" type="text" id="recordYear" value="F" />
             </label>
-        </section>
-        <section id="results">
+        </section> -->
+        <!-- <section id="results">
             <article>
                 <label for="formula">
                     <p>Formule à coller dans Excel :</p>
@@ -47,7 +69,7 @@
                     <br>
                     <button id="copy" class="outline secondary">Copier la formule</button>
             </article>
-        </section>
+        </section> -->
     </main>
 </body>
 <script src="./js/script.js"></script>
