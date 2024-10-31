@@ -13,23 +13,29 @@
 <body>
     <main class="container">
         <section id="V2">
-            <div class="row my-3 d-inline-flex align-items-center">
-                <!-- <div class="col">
-                    <input type="checkbox" id="activation" title="cocher pour activer ce paramètre" />
-                </div> -->
+            <div class="row my-3  align-items-center">
                 <div class="col-auto">
-                    <label class="form-label">titre paramètre</label>
+                    <input type="checkbox" id="activation" title="cocher pour activer ce paramètre" />
+                </div>
+                <div class="col-auto">
+                    <label class="form-label h4">titre paramètre</label>
                 </div>
                 <div class="col-auto">
                     <label class="form-label" for="column">colonne : </label>
                 </div>
                 <div class="col-auto">
-                    <input class="form-control" type="text" id="column" value="A"
+                    <input class="form-control" type="text" id="column" placeholder="N° de colonne"
                         title="lettre de la colonne correspondant au paramètre" />
                 </div>
                 <div class="col">
                     <input class="form-range" type="range" id="slider" title="poids du paramètre dans le score global"
-                        min="0" max="10" />
+                        min="0" max="10" list="marks" />
+                    <datalist id="marks">
+                        <option value="0" label="0"></option>
+                        <option value="0" label="5"></option>
+                        <option value=100" label="10"></option>
+                    </datalist>
+
                 </div>
             </div>
         </section>
