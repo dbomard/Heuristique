@@ -10,9 +10,9 @@ function updateformula() {
   const formula = document.querySelector("#formula");
   formula.children[0].innerText = `${columnN0.value}2*1`;
   formula.children[1].innerText = `${columnN1.value}2*0,5`;
-  formula.children[2].innerText = `(50/(${nextYear}-SI(ANNEE(${recordYear.value}2)="";2010;ANNEE(${recordYear.value}2))))`;
+  formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
   formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";0;${lastLoan.value}2)))`;
-  formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(ANNEE(${recordYear.value}2)="";2010;ANNEE(${recordYear.value}2))))`;
+  formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
   // const text =;
   // +\
   // +\
