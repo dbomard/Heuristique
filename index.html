@@ -12,34 +12,38 @@
 
 <body>
     <main class="container">
-        <section id="V2">
-            <div class="row my-3  align-items-center">
-                <div class="col-auto">
-                    <input type="checkbox" id="activation" title="cocher pour activer ce paramètre" />
-                </div>
-                <div class="col-auto">
-                    <label class="form-label h4">titre paramètre</label>
-                </div>
-                <div class="col-auto">
-                    <label class="form-label" for="column">colonne : </label>
-                </div>
-                <div class="col-auto">
-                    <input class="form-control" type="text" id="column" placeholder="N° de colonne"
-                        title="lettre de la colonne correspondant au paramètre" />
-                </div>
-                <div class="col">
-                    <input class="form-range" type="range" id="slider" title="poids du paramètre dans le score global"
-                        min="0" max="10" list="marks" />
-                    <datalist id="marks">
-                        <option value="0" label="0"></option>
-                        <option value="0" label="5"></option>
-                        <option value=100" label="10"></option>
-                    </datalist>
+        <section id="parameters">
 
-                </div>
-            </div>
         </section>
-        <!-- <section id="entries">
+    </main>
+    <template id="parameter">
+        <div class="row my-3  align-items-center">
+            <div class="col-auto">
+                <input type="checkbox" id="active" title="cocher pour activer ce paramètre" />
+            </div>
+            <div class="col-auto">
+                <label class="form-label h4" id="title"></label>
+            </div>
+            <div class="col-auto">
+                <label class="form-label" for="column">colonne : </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" id="column" placeholder="N° de colonne"
+                    title="lettre de la colonne correspondant au paramètre" />
+            </div>
+            <div class="col">
+                <input class="form-range" type="range" id="range" title="poids du paramètre dans le score global" min="0"
+                    max="10" list="marks" />
+                <datalist id="marks">
+                    <option value="0" label="0"></option>
+                    <option value="0" label="5"></option>
+                    <option value=100" label="10"></option>
+                </datalist>
+
+            </div>
+        </div>
+    </template>
+    <!-- <section id="entries">
             <p>Année N : <span id="current-year"></span></p>
             <label for="columnN0" role="group" class="grid">
                 Colonne nombre de prêts de l'année N :<input class="entry" type="text" id="columnN0" value="H" />
@@ -57,7 +61,7 @@
                 Colonne date de saisie :<input class="entry" type="text" id="recordYear" value="F" />
             </label>
         </section> -->
-        <!-- <section id="results">
+    <!-- <section id="results">
             <article>
                 <label for="formula">
                     <p>Formule à coller dans Excel :</p>
@@ -76,7 +80,6 @@
                     <button id="copy" class="outline secondary">Copier la formule</button>
             </article>
         </section> -->
-    </main>
 </body>
 <script src="./js/script.js"></script>
 
