@@ -8,10 +8,10 @@ function updateformula() {
   const nextYear = parseInt(currentYear) + 1;
 
   const formula = document.querySelector("#formula");
-  formula.children[0].innerText = `${columnN0.value}2*1`;
-  formula.children[1].innerText = `${columnN1.value}2*0,5`;
+  formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value})*1`;
+  formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value})*0,5`;
   formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
-  formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";0;${lastLoan.value}2)))`;
+  formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";2000;${lastLoan.value}2)))`;
   formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
   // const text =;
   // +\
