@@ -1,6 +1,7 @@
 // V2
 class Parameter {
   constructor(title, column = "A", weight = 5, active = true) {
+    console.log("New paramater object");
     this.title = title;
     this.column = column;
     if (weight < 0) {
@@ -10,6 +11,16 @@ class Parameter {
     }
     this.weight = weight;
     this.active = active;
+    this.addElementToDOM();
+  }
+
+  addElementToDOM() {
+    console.log("Add element to DOM");
+    const template = document.querySelector("#parameter");
+    const clone = document.importNode(template.content, true);
+    
+    const paramatersSection = document.querySelector("#parameters");
+    paramatersSection.appendChild(clone);
   }
 }
 
