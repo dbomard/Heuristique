@@ -42,7 +42,7 @@ class Parameter {
     this.rangeElt = clone.querySelector("#range");
     this.rangeElt.id = `range${this.id}`;
     this.rangeElt.value = this.weight;
-    this.rangeElt.addEventListener("change", () => {
+    this.rangeElt.addEventListener("input", () => {
       this.weight = this.rangeElt.value;
       console.log(`Influence : ${this.weight}`);
     });
@@ -54,6 +54,13 @@ class Parameter {
 
 document.addEventListener("DOMContentLoaded", () => {
   const loanN = new Parameter("Nombre de prêts dans l'année N", "H");
+  const loanN1 = new Parameter("Nombre de prêts dans l'année N-1", "I");
+  const loanN2 = new Parameter("Nombre de prêts dans l'année N-2", "J");
+  const loanN3 = new Parameter("Nombre de prêts dans l'année N-3", "K");
+  const last = new Parameter("Dernière année de prêt", "G");
+  const total = new Parameter("Nombre de prêts cumulés", "L");
+  const added = new Parameter("Date de saisie", "F");
+  const published = new Parameter("Publié le", "E");
 });
 
 // V1
