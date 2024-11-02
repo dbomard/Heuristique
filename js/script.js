@@ -12,40 +12,43 @@ class Parameter {
     }
     this.weight = weight;
     this.active = active;
+    this.id = Parameter.index;
     this.addElementToDOM();
-  }
-
-  updateActive(e) {
-    this.active = e.target.checked;
-    this.DOMElement.disabled = this.active;
   }
 
   addElementToDOM() {
     console.log("Add element to DOM");
     let template = document.querySelector("#parameter");
     let clone = document.importNode(template.content, true);
-    clone.firstChild.id = "parameter" + Parameter.index;
 
-    let active = clone.querySelector("#active");
-    active.id = "active" + Parameter.index;
-    active.checked = this.active;
-    active.addEventListener("change", this.updateActive);
+    this.activeElt = clone.querySelector("#active");
+    this.activeElt.id = `active${this.id}`;
+    this.activeElt.checked = this.active;
+    this.activeElt.addEventListener("change", () => {
+      this.active = this.activeElt.checked;
+      this.titleElt.disabled = !this.active;
+      this.columnElt.disabled = !this.active;
+      this.rangeElt.disabled = !this.active;
+    });
 
-    let title = clone.querySelector("#title");
-    title.id = "title" + Parameter.index;
-    title.innerText = this.title;
+    this.titleElt = clone.querySelector("#title");
+    this.titleElt.id = `title${this.id}`;
+    this.titleElt.innerText = this.title;
 
-    let column = clone.querySelector("#column");
-    column.id = "column" + Parameter.index;
-    column.value = this.column;
+    this.columnElt = clone.querySelector("#column");
+    this.columnElt.id = `column${this.id}`;
+    this.columnElt.value = this.column;
 
-    let range = clone.querySelector("#range");
-    range.id = "range" + Parameter.index;
-    range.value = this.weight;
+    this.rangeElt = clone.querySelector("#range");
+    this.rangeElt.id = `range${this.id}`;
+    this.rangeElt.value = this.weight;
+    this.rangeElt.addEventListener("change", () => {
+      this.weight = this.rangeElt.value;
+      console.log(`Influence : ${this.weight}`);
+    });
 
     let paramatersSection = document.querySelector("#parameters");
     paramatersSection.appendChild(clone);
-    this.DOMElement = document.querySelector(`#parameter${Parameter.index}`);
   }
 }
 
