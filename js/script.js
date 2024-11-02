@@ -1,5 +1,6 @@
 // V2
 class Parameter {
+  static index = 0;
   constructor(title, column = "A", weight = 5, active = true) {
     console.log("New paramater object");
     this.title = title;
@@ -14,13 +15,37 @@ class Parameter {
     this.addElementToDOM();
   }
 
+  updateActive(e) {
+    this.active = e.target.checked;
+    this.DOMElement.disabled = this.active;
+  }
+
   addElementToDOM() {
     console.log("Add element to DOM");
-    const template = document.querySelector("#parameter");
-    const clone = document.importNode(template.content, true);
-    
-    const paramatersSection = document.querySelector("#parameters");
+    let template = document.querySelector("#parameter");
+    let clone = document.importNode(template.content, true);
+    clone.firstChild.id = "parameter" + Parameter.index;
+
+    let active = clone.querySelector("#active");
+    active.id = "active" + Parameter.index;
+    active.checked = this.active;
+    active.addEventListener("change", this.updateActive);
+
+    let title = clone.querySelector("#title");
+    title.id = "title" + Parameter.index;
+    title.innerText = this.title;
+
+    let column = clone.querySelector("#column");
+    column.id = "column" + Parameter.index;
+    column.value = this.column;
+
+    let range = clone.querySelector("#range");
+    range.id = "range" + Parameter.index;
+    range.value = this.weight;
+
+    let paramatersSection = document.querySelector("#parameters");
     paramatersSection.appendChild(clone);
+    this.DOMElement = document.querySelector(`#parameter${Parameter.index}`);
   }
 }
 
