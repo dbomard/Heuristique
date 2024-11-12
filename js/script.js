@@ -1,6 +1,7 @@
 // V2
 class Parameter {
   static index = 0;
+
   constructor(title, column = "A", weight = 5, active = true) {
     console.log("New paramater object");
     this.title = title;
@@ -13,6 +14,7 @@ class Parameter {
     this.weight = weight;
     this.active = active;
     this.id = Parameter.index;
+    Parameter.index++;
     this.addElementToDOM();
   }
 
@@ -42,9 +44,10 @@ class Parameter {
     this.rangeElt = clone.querySelector("#range");
     this.rangeElt.id = `range${this.id}`;
     this.rangeElt.value = this.weight;
-    this.rangeElt.addEventListener("input", () => {
+    this.rangeElt.addEventListener("input", (e) => {
       this.weight = this.rangeElt.value;
       console.log(`Influence : ${this.weight}`);
+      console.log(e.target);
     });
 
     let paramatersSection = document.querySelector("#parameters");
@@ -52,15 +55,86 @@ class Parameter {
   }
 }
 
+class Coefficient extends Parameter {
+  constructor(title, column = "A", weight = 5, active = true) {
+    super(title, column, weight, active);
+    console.log("New Coefficient object");
+    this.formula = `SI(${this.column}2="";0;${this.column}2)*1`;
+  }
+
+  toString() {
+    return this.formula;
+  }
+}
+
+class Ponderation extends Parameter {
+  constructor(
+    title,
+    column = "A",
+    weight = 5,
+    active = true,
+    nextYear = "2025"
+  ) {
+    super(title, column, weight, active);
+    console.log("New Coefficient object");
+    this.nextYear = nextYear;
+    this.updateFormula();
+  }
+
+  updateFormula() {
+    this.formula = `(${this.weight * 10}/(${this.nextYear}-SI(${
+      this.column
+    }2="";2010;ANNEE(${this.column}2))))`;
+  }
+
+  toString() {
+    return this.formula;
+  }
+}
+
+class Formula {
+  constructor() {
+    console.log("New Formula object");
+    this.parametersList = [];
+  }
+
+  addParameter(paramater) {
+    this.parametersList.push(paramater);
+  }
+
+  updateDOM() {
+    var elt = document.querySelector("#formula");
+    this.parametersList.forEach((element) => {
+      console.log(element.toString());
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  const loanN = new Parameter("Nombre de prêts dans l'année N", "H");
-  const loanN1 = new Parameter("Nombre de prêts dans l'année N-1", "I");
-  const loanN2 = new Parameter("Nombre de prêts dans l'année N-2", "J");
-  const loanN3 = new Parameter("Nombre de prêts dans l'année N-3", "K");
-  const last = new Parameter("Dernière année de prêt", "G");
-  const total = new Parameter("Nombre de prêts cumulés", "L");
+  const loanN = new Coefficient("Nombre de prêts dans l'année N", "H");
+  const loanN1 = new Coefficient("Nombre de prêts dans l'année N-1", "I");
+  const loanN2 = new Coefficient("Nombre de prêts dans l'année N-2", "J");
+  const loanN3 = new Coefficient("Nombre de prêts dans l'année N-3", "K");
+  const last = new Ponderation("Dernière année de prêt", "G", 5, true, "2025");
+  const total = new Ponderation(
+    "Nombre de prêts cumulés",
+    "L",
+    2,
+    true,
+    "2025"
+  );
   const added = new Parameter("Date de saisie", "F");
   const published = new Parameter("Publié le", "E");
+  const formula = new Formula();
+  formula.addParameter(loanN);
+  formula.addParameter(loanN1);
+  formula.addParameter(loanN2);
+  formula.addParameter(loanN3);
+  formula.addParameter(last);
+  formula.addParameter(total);
+  formula.addParameter(added);
+  formula.addParameter(published);
+  formula.updateDOM();
 });
 
 // V1
