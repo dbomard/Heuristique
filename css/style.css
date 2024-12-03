@@ -1,12 +1,23 @@
-.formula-cell:hover {
-    color: red;
-    /* cursor: help; */
+.formula-cell:nth-child(1):hover {
+  color: #dd0000;
+}
+.formula-cell:nth-child(2):hover {
+  color: #4488aa;
+}
+.formula-cell:nth-child(3):hover {
+  color: #008800;
+}
+.formula-cell:nth-child(4):hover {
+  color: #aaaa00;
+}
+.formula-cell:nth-child(5):hover {
+  color: #dd0099;
 }
 
 .entry {
-    max-width: 3em;
+  max-width: 3em;
 }
 
 .grid {
-    align-items: center;
+  align-items: center;
 }
