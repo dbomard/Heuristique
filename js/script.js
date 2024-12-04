@@ -45,4 +45,36 @@ document.addEventListener("DOMContentLoaded", () => {
   updateformula();
   const copyBtn = document.querySelector("#copy");
   copyBtn.addEventListener("click", copyToClipboard);
+  const formulaCells = document.querySelectorAll(".formula-cell");
+  const columnsCells = document.querySelectorAll(".entry");
+  for (let i = 0; i < 5; i++) {
+    formulaCells[i].addEventListener("mouseover", (e) => {
+      let indice = e.currentTarget.dataset.index;
+      e.currentTarget.classList.add(`hover-formula-style${indice}`);
+      let element = document.querySelector(`.entry[data-index="${indice}"]`);
+      element.classList.add(`selected-column-style${indice}`);
+    });
+    formulaCells[i].addEventListener("mouseout", (e) => {
+      let indice = e.currentTarget.dataset.index;
+      e.currentTarget.classList.remove(`hover-formula-style${indice}`);
+      let element = document.querySelector(`.entry[data-index="${indice}"]`);
+      element.classList.remove(`selected-column-style${indice}`);
+    });
+    columnsCells[i].addEventListener("mouseover", (e) => {
+      let indice = e.currentTarget.dataset.index;
+      e.currentTarget.classList.add(`selected-column-style${indice}`);
+      let element = document.querySelector(
+        `.formula-cell[data-index="${indice}"]`
+      );
+      element.classList.add(`hover-formula-style${indice}`);
+    });
+    columnsCells[i].addEventListener("mouseout", (e) => {
+      let indice = e.currentTarget.dataset.index;
+      e.currentTarget.classList.remove(`selected-column-style${indice}`);
+      let element = document.querySelector(
+        `.formula-cell[data-index="${indice}"]`
+      );
+      element.classList.remove(`hover-formula-style${indice}`);
+    });
+  }
 });
