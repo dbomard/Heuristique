@@ -13,12 +13,6 @@ function updateformula() {
   formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
   formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";2000;${lastLoan.value}2)))`;
   formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
-  // const text =;
-  // +\
-  // +\
-  // +\
-  // `;
-  // formula.innerText = text;
 }
 
 function copyToClipboard() {
