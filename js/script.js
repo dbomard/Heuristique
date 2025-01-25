@@ -37,6 +37,7 @@ function updateDates() {
   document.querySelector(
     "#columnN1Label"
   ).innerText = `Colonne nombre de prêts de l'année ${currentYear - 1} :`;
+  // TODO : ajouter une message pour rappeler de changer également la lettre de la colonne.
 }
 
 document.addEventListener("DOMContentLoaded", () => {
