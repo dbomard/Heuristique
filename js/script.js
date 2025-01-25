@@ -21,10 +21,10 @@ function copyToClipboard() {
 
   navigator.clipboard.writeText(formula).then(
     function () {
-      alert("Le texte a été copié");
+      alert("La formule a été copiée");
     },
     function () {
-      alert("Le texte n'a pas été copié");
+      alert("La formule n'a pas été copiée");
     }
   );
 }
