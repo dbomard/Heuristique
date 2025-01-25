@@ -39,6 +39,10 @@
   max-width: 3em;
 }
 
+#current-year {
+  max-width: 6em;
+}
+
 .grid {
   align-items: center;
 }

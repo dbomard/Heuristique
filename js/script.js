@@ -31,7 +31,9 @@ function copyToClipboard() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const currentYearInput = document.querySelector("#current-year");
-  currentYearInput.innerText = new Date().getFullYear();
+  currentYearInput.value = new Date().getFullYear();
+  currentYearInput.max = new Date().getFullYear();
+  currentYearInput.min = new Date().getFullYear() - 3;
   const columns = document.querySelectorAll(".entry");
   columns.forEach((element) =>
     element.addEventListener("change", updateformula)
