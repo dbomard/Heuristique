@@ -29,11 +29,36 @@ function copyToClipboard() {
   );
 }
 
+function updateDates() {
+  let currentYear = document.querySelector("#current-year").value;
+  document.querySelector(
+    "#columnN0Label"
+  ).innerText = `Colonne nombre de prêts de l'année ${currentYear} :`;
+  document.querySelector(
+    "#columnN1Label"
+  ).innerText = `Colonne nombre de prêts de l'année ${currentYear - 1} :`;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const currentYearInput = document.querySelector("#current-year");
   currentYearInput.value = new Date().getFullYear();
   currentYearInput.max = new Date().getFullYear();
-  currentYearInput.min = new Date().getFullYear() - 3;
+  currentYearInput.min = new Date().getFullYear() - 2;
+  updateDates();
+  currentYearInput.addEventListener("change", (e) => {
+    let currentYear = e.target.value;
+    let maxYear = new Date().getFullYear();
+    let currentYearInput = document.querySelector("#current-year");
+
+    if (currentYear > maxYear) {
+      currentYearInput.value = maxYear;
+    } else if (currentYear < maxYear - 2) {
+      currentYearInput.value = maxYear - 2;
+    }
+
+    updateDates();
+  });
+
   const columns = document.querySelectorAll(".entry");
   columns.forEach((element) =>
     element.addEventListener("change", updateformula)

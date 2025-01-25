@@ -35,6 +35,10 @@
   color: #dd0099;
 }
 
+.columnYear {
+  max-width: fit-content;
+}
+
 .entry {
   max-width: 3em;
 }
