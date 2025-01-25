@@ -3,16 +3,16 @@
   background-color: #dd000050;
 }
 .selected-column-style2 {
-  color: #346881;
-  background-color: #34698149;
+  color: #0004ff;
+  background-color: #0004ff52;
 }
 .selected-column-style3 {
   color: #008800;
   background-color: #00880052;
 }
 .selected-column-style4 {
-  color: #6d6d00;
-  background-color: #aaaa0062;
+  color: #887f00;
+  background-color: #d4c600;
 }
 .selected-column-style5 {
   color: #dd0099;
@@ -23,13 +23,13 @@
   color: #dd0000;
 }
 .hover-formula-style2 {
-  color: #346881;
+  color: #0004ff;
 }
 .hover-formula-style3 {
   color: #008800;
 }
 .hover-formula-style4 {
-  color: #6d6d00;
+  color: #887f00;
 }
 .hover-formula-style5 {
   color: #dd0099;
