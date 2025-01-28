@@ -4,8 +4,7 @@ function updateformula() {
   const lastLoan = document.querySelector("#lastLoan");
   const totalLoan = document.querySelector("#totalLoan");
   const recordYear = document.querySelector("#recordYear");
-  const currentYear = document.querySelector("#current-year").innerText;
-  const nextYear = parseInt(currentYear) + 1;
+  const nextYear = parseInt(new Date().getFullYear()) + 1;
 
   const formula = document.querySelector("#formula");
   formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*1`;
