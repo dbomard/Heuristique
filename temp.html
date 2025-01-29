@@ -1,0 +1,207 @@
+<style>
+    .selected-column-style1 {
+        color: #dd0000;
+        background-color: #dd000050;
+    }
+
+    .selected-column-style2 {
+        color: #0004ff;
+        background-color: #0004ff52;
+    }
+
+    .selected-column-style3 {
+        color: #008800;
+        background-color: #00880052;
+    }
+
+    .selected-column-style4 {
+        color: #887f00;
+        background-color: #d4c600;
+    }
+
+    .selected-column-style5 {
+        color: #dd0099;
+        background-color: #dd009b50;
+    }
+
+    .hover-formula-style1 {
+        color: #dd0000;
+    }
+
+    .hover-formula-style2 {
+        color: #0004ff;
+    }
+
+    .hover-formula-style3 {
+        color: #008800;
+    }
+
+    .hover-formula-style4 {
+        color: #887f00;
+    }
+
+    .hover-formula-style5 {
+        color: #dd0099;
+    }
+
+    .d-flex {
+        display: flex;
+        align-items: center;
+    }
+
+    .mb-3 {
+        margin-bottom: 1em;
+    }
+
+    .entry {
+        margin-left: 1em;
+        text-align: center;
+    }
+
+    .size-3 {
+        max-width: 3em;
+    }
+
+    .size-6 {
+        max-width: 5.7em;
+    }
+</style>
+<div>
+    <section id="entries">
+        <div class="d-flex mb-3"><label for="current-year" class="form-label">Année courante :</label> <input
+                type="number" id="current-year" class="form-control entry size-6" /></div>
+        <div class="d-flex mb-3"><label for="columnN0" class="form-label"> <span id="columnN0Label"
+                    class="columnYear"></span></label> <input data-index="1" class="form-control entry size-3"
+                type="text" id="columnN0" value="I" /></div>
+        <div class="d-flex mb-3"><label for="columnN1" class="form-label"> <span id="columnN1Label"
+                    class="columnYear"></span></label> <input data-index="2" class="form-control entry size-3"
+                type="text" id="columnN1" value="J" /></div>
+        <div class="d-flex mb-3"><label for="recordYear" class="form-label"> Colonne Année (publication ou saisie)
+                :</label> <input data-index="3" class="form-control entry size-3" type="text" id="recordYear"
+                value="E" />
+        </div>
+        <div class="d-flex mb-3"><label for="lastLoan" class="form-label"> Colonne dernière année de prêt :</label>
+            <input data-index="4" class="form-control entry size-3" type="text" id="lastLoan" value="H" />
+        </div>
+        <div class="d-flex mb-3"><label for="totalLoan" class="form-label"> Colonne nombre de prêts cumulés :</label>
+            <input data-index="5" class="form-control entry size-3" type="text" id="totalLoan" value="M" />
+        </div>
+    </section>
+    <section id="results">
+        <article><label for="formula">
+                <p>Formule à coller dans Excel :</p>
+                <div id="formula">=<span class="formula-cell" data-index="1"
+                        title="Coefficient 1 appliqué aux prêts de l’année N"></span>+<span class="formula-cell"
+                        data-index="2" title="Coefficient 0.5 appliqué aux prêts de l’année N-1"></span>+<span
+                        class="formula-cell" data-index="3"
+                        title="Valorisation des documents publiés ou acquis récemment"></span>+<span class="formula-cell"
+                        data-index="4" title="Valorisation des documents empruntés récemment"></span>+<span
+                        class="formula-cell" data-index="5"
+                        title="Prêts cumulés valorisés mais pondérés par l’âge des documents"></span></div>
+                <br /><button id="copy" class="btn btn-primary">Copier la formule</button>
+            </label></article>
+    </section>
+</div>
+<script>
+    function updateformula() {
+        const columnN0 = document.querySelector("#columnN0");
+        const columnN1 = document.querySelector("#columnN1");
+        const lastLoan = document.querySelector("#lastLoan");
+        const totalLoan = document.querySelector("#totalLoan");
+        const recordYear = document.querySelector("#recordYear");
+        const nextYear = parseInt(new Date().getFullYear()) + 1;
+
+        const formula = document.querySelector("#formula");
+        formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*1`;
+        formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*0,5`;
+        formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
+        formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";2000;${lastLoan.value}2)))`;
+        formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
+    }
+
+    function copyToClipboard() {
+        console.log("Fonction de copie");
+        const formula = document.querySelector("#formula").innerText;
+
+        navigator.clipboard.writeText(formula).then(
+            function () {
+                alert("La formule a été copiée");
+            },
+            function () {
+                alert("La formule n'a pas été copiée");
+            }
+        );
+    }
+
+    function updateDates() {
+        let currentYear = document.querySelector("#current-year").value;
+        document.querySelector(
+            "#columnN0Label"
+        ).innerText = `Colonne nombre de prêts de l'année ${currentYear} :`;
+        document.querySelector(
+            "#columnN1Label"
+        ).innerText = `Colonne nombre de prêts de l'année ${currentYear - 1} :`;
+        // TODO : ajouter une message pour rappeler de changer également la lettre de la colonne.
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentYearInput = document.querySelector("#current-year");
+        currentYearInput.value = new Date().getFullYear();
+        currentYearInput.max = new Date().getFullYear();
+        currentYearInput.min = new Date().getFullYear() - 2;
+        updateDates();
+        currentYearInput.addEventListener("change", (e) => {
+            let currentYear = e.target.value;
+            let maxYear = new Date().getFullYear();
+            let currentYearInput = document.querySelector("#current-year");
+
+            if (currentYear > maxYear) {
+                currentYearInput.value = maxYear;
+            } else if (currentYear < maxYear - 2) {
+                currentYearInput.value = maxYear - 2;
+            }
+
+            updateDates();
+        });
+
+        const columns = document.querySelectorAll(".entry");
+        columns.forEach((element) =>
+            element.addEventListener("change", updateformula)
+        );
+        updateformula();
+        const copyBtn = document.querySelector("#copy");
+        copyBtn.addEventListener("click", copyToClipboard);
+        const formulaCells = document.querySelectorAll(".formula-cell");
+        const columnsCells = document.querySelectorAll('input[type="text"].entry');
+        for (let i = 0; i < 5; i++) {
+            formulaCells[i].addEventListener("mouseover", (e) => {
+                let indice = e.currentTarget.dataset.index;
+                e.currentTarget.classList.add(`hover-formula-style${indice}`);
+                let element = document.querySelector(`.entry[data-index="${indice}"]`);
+                element.classList.add(`selected-column-style${indice}`);
+            });
+            formulaCells[i].addEventListener("mouseout", (e) => {
+                let indice = e.currentTarget.dataset.index;
+                e.currentTarget.classList.remove(`hover-formula-style${indice}`);
+                let element = document.querySelector(`.entry[data-index="${indice}"]`);
+                element.classList.remove(`selected-column-style${indice}`);
+            });
+            columnsCells[i].addEventListener("mouseover", (e) => {
+                let indice = e.currentTarget.dataset.index;
+                e.currentTarget.classList.add(`selected-column-style${indice}`);
+                let element = document.querySelector(
+                    `.formula-cell[data-index="${indice}"]`
+                );
+                element.classList.add(`hover-formula-style${indice}`);
+            });
+            columnsCells[i].addEventListener("mouseout", (e) => {
+                let indice = e.currentTarget.dataset.index;
+                e.currentTarget.classList.remove(`selected-column-style${indice}`);
+                let element = document.querySelector(
+                    `.formula-cell[data-index="${indice}"]`
+                );
+                element.classList.remove(`hover-formula-style${indice}`);
+            });
+        }
+    });
+</script>
