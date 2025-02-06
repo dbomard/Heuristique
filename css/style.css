@@ -67,15 +67,22 @@
 
 .cadre{
   border: 1px solid silver;
+  border-radius: .4rem;
+  margin-bottom: 1rem;
+  display: inline-block;
 }
 
 .cadre-title{
   width: unset;
-  padding: .2rem;
+  padding: .3rem;
   margin-bottom: unset;
   border-bottom: unset;
 }
 
 .cadre-option{
   margin: unset;
+}
+
+.cadre-choice{
+  margin-bottom: .3rem;
 }
