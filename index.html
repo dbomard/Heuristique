@@ -5,12 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aide au désherbage</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"> -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <main class="container">
+    <main>
+        <style>
+            
+        </style>
+        <div><fieldset class="cadre" id="options"><legend class="cadre-title">Options de la colonne année</legend> <input type="radio" id="yearPublish" name="yearType" class="cadre-option" checked="checked" /> <label for="yearPublish">Année de publication</label> <input type="radio" id="yearAcq" class="cadre-option" name="yearType" /> <label for="yearAcq">Année d'acquisition</label></fieldset>
+            <section id="entries">
+                <div class="d-flex mb-3"><label for="current-year" class="form-label">Dernière année de prêt utilisée pour le calcul :</label> <input type="number" id="current-year" class="form-control entry size-6" /></div>
+                <div class="d-flex mb-3"><label for="columnN0" class="form-label"> <span id="columnN0Label" class="columnYear"></span></label> <input data-index="1" class="form-control entry size-3" type="text" id="columnN0" value="I" /></div>
+                <div class="d-flex mb-3"><label for="columnN1" class="form-label"> <span id="columnN1Label" class="columnYear"></span></label> <input data-index="2" class="form-control entry size-3" type="text" id="columnN1" value="J" /></div>
+                <div class="d-flex mb-3"><label for="recordYear" class="form-label"> Colonne Année (publication ou saisie) :</label> <input data-index="3" class="form-control entry size-3" type="text" id="recordYear" value="E" /></div>
+                <div class="d-flex mb-3"><label for="lastLoan" class="form-label"> Colonne dernière année de prêt :</label> <input data-index="4" class="form-control entry size-3" type="text" id="lastLoan" value="H" /></div>
+                <div class="d-flex mb-3"><label for="totalLoan" class="form-label"> Colonne nombre de prêts cumulés :</label> <input data-index="5" class="form-control entry size-3" type="text" id="totalLoan" value="M" /></div>
+            </section>
+            <section id="results">
+                <article><label for="formula">
+                    <p>Formule à coller dans Excel :</p>
+                    <div id="formula">=<span class="formula-cell" data-index="1" title="Coefficient 1 appliqué aux prêts de l’année N"></span>+<span class="formula-cell" data-index="2" title="Coefficient 0.5 appliqué aux prêts de l’année N-1"></span>+<span class="formula-cell" data-index="3" title="Valorisation des documents publiés ou acquis récemment"></span>+<span class="formula-cell" data-index="4" title="Valorisation des documents empruntés récemment"></span>+<span class="formula-cell" data-index="5" title="Prêts cumulés valorisés mais pondérés par l’âge des documents"></span></div>
+                    <br /><button id="copy" class="btn btn-primary">Copier la formule</button> </label></article>
+            </section>
+        </div>
+        <script>
+
+        </script>
+    </main>
+    <!-- <main class="container">
         <section id="entries">
             <label for="current-year" class="grid">Année courante :<input type="number" id="current-year" />
             </label>
@@ -54,7 +78,7 @@
             </article>
         </section>
     </main>
-</body>
+</body> -->
 <script src="./js/script.js"></script>
 
 </html>

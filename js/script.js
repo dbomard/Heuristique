@@ -19,22 +19,22 @@ function copyToClipboard() {
   const formula = document.querySelector("#formula").innerText;
 
   navigator.clipboard.writeText(formula).then(
-    function () {
-      alert("La formule a été copiée");
-    },
-    function () {
-      alert("La formule n'a pas été copiée");
-    }
+      function () {
+          alert("La formule a été copiée");
+      },
+      function () {
+          alert("La formule n'a pas été copiée");
+      }
   );
 }
 
 function updateDates() {
   let currentYear = document.querySelector("#current-year").value;
   document.querySelector(
-    "#columnN0Label"
+      "#columnN0Label"
   ).innerText = `Colonne nombre de prêts de l'année ${currentYear} :`;
   document.querySelector(
-    "#columnN1Label"
+      "#columnN1Label"
   ).innerText = `Colonne nombre de prêts de l'année ${currentYear - 1} :`;
   // TODO : ajouter une message pour rappeler de changer également la lettre de la colonne.
 }
@@ -46,56 +46,56 @@ document.addEventListener("DOMContentLoaded", () => {
   currentYearInput.min = new Date().getFullYear() - 2;
   updateDates();
   currentYearInput.addEventListener("change", (e) => {
-    let currentYear = e.target.value;
-    let maxYear = new Date().getFullYear();
-    let currentYearInput = document.querySelector("#current-year");
+      let currentYear = e.target.value;
+      let maxYear = new Date().getFullYear();
+      let currentYearInput = document.querySelector("#current-year");
 
-    if (currentYear > maxYear) {
-      currentYearInput.value = maxYear;
-    } else if (currentYear < maxYear - 2) {
-      currentYearInput.value = maxYear - 2;
-    }
+      if (currentYear > maxYear) {
+          currentYearInput.value = maxYear;
+      } else if (currentYear < maxYear - 2) {
+          currentYearInput.value = maxYear - 2;
+      }
 
-    updateDates();
+      updateDates();
   });
 
   const columns = document.querySelectorAll(".entry");
   columns.forEach((element) =>
-    element.addEventListener("change", updateformula)
-  );
+                                  element.addEventListener("change", updateformula)
+                               );
   updateformula();
   const copyBtn = document.querySelector("#copy");
   copyBtn.addEventListener("click", copyToClipboard);
   const formulaCells = document.querySelectorAll(".formula-cell");
-  const columnsCells = document.querySelectorAll(".entry");
+  const columnsCells = document.querySelectorAll('input[type="text"].entry');
   for (let i = 0; i < 5; i++) {
-    formulaCells[i].addEventListener("mouseover", (e) => {
-      let indice = e.currentTarget.dataset.index;
-      e.currentTarget.classList.add(`hover-formula-style${indice}`);
-      let element = document.querySelector(`.entry[data-index="${indice}"]`);
-      element.classList.add(`selected-column-style${indice}`);
-    });
-    formulaCells[i].addEventListener("mouseout", (e) => {
-      let indice = e.currentTarget.dataset.index;
-      e.currentTarget.classList.remove(`hover-formula-style${indice}`);
-      let element = document.querySelector(`.entry[data-index="${indice}"]`);
-      element.classList.remove(`selected-column-style${indice}`);
-    });
-    columnsCells[i].addEventListener("mouseover", (e) => {
-      let indice = e.currentTarget.dataset.index;
-      e.currentTarget.classList.add(`selected-column-style${indice}`);
-      let element = document.querySelector(
-        `.formula-cell[data-index="${indice}"]`
-      );
-      element.classList.add(`hover-formula-style${indice}`);
-    });
-    columnsCells[i].addEventListener("mouseout", (e) => {
-      let indice = e.currentTarget.dataset.index;
-      e.currentTarget.classList.remove(`selected-column-style${indice}`);
-      let element = document.querySelector(
-        `.formula-cell[data-index="${indice}"]`
-      );
-      element.classList.remove(`hover-formula-style${indice}`);
-    });
+      formulaCells[i].addEventListener("mouseover", (e) => {
+          let indice = e.currentTarget.dataset.index;
+          e.currentTarget.classList.add(`hover-formula-style${indice}`);
+          let element = document.querySelector(`.entry[data-index="${indice}"]`);
+          element.classList.add(`selected-column-style${indice}`);
+      });
+      formulaCells[i].addEventListener("mouseout", (e) => {
+          let indice = e.currentTarget.dataset.index;
+          e.currentTarget.classList.remove(`hover-formula-style${indice}`);
+          let element = document.querySelector(`.entry[data-index="${indice}"]`);
+          element.classList.remove(`selected-column-style${indice}`);
+      });
+      columnsCells[i].addEventListener("mouseover", (e) => {
+          let indice = e.currentTarget.dataset.index;
+          e.currentTarget.classList.add(`selected-column-style${indice}`);
+          let element = document.querySelector(
+              `.formula-cell[data-index="${indice}"]`
+          );
+          element.classList.add(`hover-formula-style${indice}`);
+      });
+      columnsCells[i].addEventListener("mouseout", (e) => {
+          let indice = e.currentTarget.dataset.index;
+          e.currentTarget.classList.remove(`selected-column-style${indice}`);
+          let element = document.querySelector(
+              `.formula-cell[data-index="${indice}"]`
+          );
+          element.classList.remove(`hover-formula-style${indice}`);
+      });
   }
 });
