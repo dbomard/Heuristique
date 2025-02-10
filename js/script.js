@@ -1,3 +1,6 @@
+/**
+ * Mise à jour de la formule pour le calcul de l'indice de performance
+ */
 function updateformula() {
   const columnN0 = document.querySelector("#columnN0");
   const columnN1 = document.querySelector("#columnN1");
@@ -15,6 +18,9 @@ function updateformula() {
   formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};ANNEE(${recordYear.value}2))))`;
 }
 
+/**
+ * Copie la formule de l'indice de performance dans le presse-papier
+ */
 function copyToClipboard() {
   console.log("Fonction de copie");
   const formula = document.querySelector("#formula").innerText;
@@ -29,6 +35,9 @@ function copyToClipboard() {
   );
 }
 
+/**
+ * Mise à jour des labels pour les années N et N-1
+ */
 function updateDates() {
   let currentYear = document.querySelector("#current-year").value;
   document.querySelector(
@@ -40,12 +49,16 @@ function updateDates() {
   // TODO : ajouter une message pour rappeler de changer également la lettre de la colonne.
 }
 
+/**
+ * Initialistation lorsque le DOM est chargé
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const currentYearInput = document.querySelector("#current-year");
   currentYearInput.value = new Date().getFullYear();
   currentYearInput.max = new Date().getFullYear();
   currentYearInput.min = new Date().getFullYear() - 2;
   updateDates();
+  // Gestionnaire de changement de la dernière année de prêt
   currentYearInput.addEventListener("change", (e) => {
     let currentYear = e.target.value;
     let maxYear = new Date().getFullYear();
@@ -56,12 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (currentYear < maxYear - 2) {
       currentYearInput.value = maxYear - 2;
     }
-
     updateDates();
   });
 
   const yearMissing = document.querySelector("#yearMissing");
   yearMissing.max = new Date().getFullYear();
+  // gestionnaire de choix de la date de publication/acquisition par défaut si non renseignée
   yearMissing.addEventListener("change", (e) => {
     let yearMax = new Date().getFullYear();
     let yearElement = e.target;
@@ -81,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   copyBtn.addEventListener("click", copyToClipboard);
   const formulaCells = document.querySelectorAll(".formula-cell");
   const columnsCells = document.querySelectorAll('input[type="text"].entry');
+  // Gestionnaires pour les changements visuels lors du survol des zones de formule et des entrées de colonnes
   for (let i = 0; i < 5; i++) {
     formulaCells[i].addEventListener("mouseover", (e) => {
       let indice = e.currentTarget.dataset.index;
