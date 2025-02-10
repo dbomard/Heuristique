@@ -5,13 +5,14 @@ function updateformula() {
   const totalLoan = document.querySelector("#totalLoan");
   const recordYear = document.querySelector("#recordYear");
   const nextYear = parseInt(new Date().getFullYear()) + 1;
+  const defaultPublishYear = document.querySelector("#yearMissing").value;
 
   const formula = document.querySelector("#formula");
   formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*1`;
   formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*0,5`;
-  formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
+  formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};ANNEE(${recordYear.value}2))))`;
   formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";2000;${lastLoan.value}2)))`;
-  formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";2010;ANNEE(${recordYear.value}2))))`;
+  formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};ANNEE(${recordYear.value}2))))`;
 }
 
 function copyToClipboard() {
