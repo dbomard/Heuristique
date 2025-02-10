@@ -30,6 +30,7 @@
                         id="recordYear" value="E" /></div>
                 <fieldset class="cadre" id="options">
                     <legend class="cadre-title">Options de la colonne année</legend>
+                    <div class="arrow-right"></div>
                     <div class="cadre-choice">
                         <input type="radio" id="yearPublish" name="yearType" class="cadre-option" checked="checked" />
                         <label for="yearPublish">Année de publication</label>
@@ -39,8 +40,10 @@
                         <label for="yearAcq">Année d'acquisition</label>
                     </div>
                     <div>
-                        <label for="yearMissing" class="form-label">Année retenue en cas d'absence d'information : </label>
-                        <input type="number" class="form-control size-6 entry" value="2008" name="yearMissing" id="yearMissing" min="1800" />
+                        <label for="yearMissing" class="form-label">Année retenue en cas d'absence d'année <span
+                                id="yearType">de publication</span> : </label>
+                        <input type="number" class="form-control size-6 entry" value="2008" name="yearMissing"
+                            id="yearMissing" min="1800" />
                     </div>
                 </fieldset>
                 <div class="d-flex mb-3"><label for="lastLoan" class="form-label"> Colonne dernière année de prêt

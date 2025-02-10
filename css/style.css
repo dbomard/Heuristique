@@ -65,24 +65,37 @@
   max-width: 5.7em;
 }
 
-.cadre{
+.cadre {
   border: 1px solid silver;
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   margin-bottom: 1rem;
   display: inline-block;
 }
 
-.cadre-title{
+.cadre-title {
   width: unset;
-  padding: .3rem;
+  padding: 0.3rem;
   margin-bottom: unset;
   border-bottom: unset;
 }
 
-.cadre-option{
+.arrow-right {
+  width: 0px;
+  height: 0px;
+  border-top: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-left: 0.5rem solid black;
+}
+
+.cadre-folded {
+  height: 0px;
+}
+
+.cadre-option {
   margin: unset;
 }
 
-.cadre-choice{
-  margin-bottom: .3rem;
+.cadre-choice {
+  margin-bottom: 0.3rem;
 }
