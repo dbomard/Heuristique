@@ -25,21 +25,23 @@
                 <div class="d-flex mb-3"><label for="columnN1" class="form-label"> <span id="columnN1Label"
                             class="columnYear"></span></label> <input data-index="2" class="form-control entry size-3"
                         type="text" id="columnN1" value="J" /></div>
-                <div class="d-flex"><label for="recordYear" class="form-label"> Colonne Année (publication ou
-                        saisie) :</label> <input data-index="3" class="form-control entry size-3" type="text"
-                        id="recordYear" value="E" />
-                    <span><input class="arrow-toggler arrow-down" title="Afficher/Masquer les options" data-target="optionsYear" type="checkbox"
-                            id="showYearOptions" /></span>
+                <div class="d-flex">
+                    <label for="recordYear" class="form-label" id="yearLabel">Colonne « Publié le » : </label>
+                    <input data-index="3" class="form-control entry size-3" type="text" id="recordYear" value="E" />
+                    <span>
+                        <input class="arrow-toggler arrow-down" title="Afficher/Masquer les options"
+                            data-target="optionsYear" type="checkbox" id="showYearOptions" />
+                    </span>
                 </div>
                 <div class="cadre cadre-folded" id="optionsYear">
                     <div class="cadre-title">Options de la colonne année</div>
                     <div class="cadre-choice">
-                        <input type="radio" id="yearPublish" name="yearType" class="cadre-option" checked="checked" />
+                        <input type="radio" id="yearPublish" name="yearChoice" class="cadre-option" checked="checked" />
                         <label for="yearPublish">Année de publication</label>
                     </div>
                     <div class="cadre-choice">
-                        <input type="radio" id="yearAcq" class="cadre-option" name="yearType" />
-                        <label for="yearAcq">Année d'acquisition</label>
+                        <input type="radio" id="yearAcq" name="yearChoice" class="cadre-option" />
+                        <label for="yearAcq">Année de saisie</label>
                     </div>
                     <div>
                         <label for="yearMissing" class="form-label">Année retenue en cas de donnée absente : </label>
@@ -47,10 +49,10 @@
                             id="yearMissing" min="1800" />
                     </div>
                 </div>
-                <div class="d-flex mb-3"><label for="lastLoan" class="form-label"> Colonne dernière année de prêt
+                <div class="d-flex mb-3"><label for="lastLoan" class="form-label"> Colonne « Dernière année de prêt »
                         :</label> <input data-index="4" class="form-control entry size-3" type="text" id="lastLoan"
                         value="H" /></div>
-                <div class="d-flex mb-3"><label for="totalLoan" class="form-label"> Colonne nombre de prêts cumulés
+                <div class="d-flex mb-3"><label for="totalLoan" class="form-label"> Colonne « Nombre de prêts cumulés »
                         :</label> <input data-index="5" class="form-control entry size-3" type="text" id="totalLoan"
                         value="M" /></div>
             </section>
