@@ -72,6 +72,8 @@
   display: inline-block;
   padding: 0.5rem 0.7rem;
   transition: all 500ms;
+  max-height: 10rem;
+  overflow: hidden;
 }
 
 .cadre-title {
@@ -83,13 +85,12 @@
 }
 
 .cadre-folded {
-  height: 0px;
+  max-height: 0px;
   border: 1px solid transparent;
   padding-bottom: 0px;
   padding-top: 0px;
   margin-bottom: 0px;
   transition: all 500ms;
-  overflow: hidden;
 }
 
 .cadre-option {
