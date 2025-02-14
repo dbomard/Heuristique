@@ -42,10 +42,10 @@ function updateDates() {
   let currentYear = document.querySelector("#current-year").value;
   document.querySelector(
     "#columnN0Label"
-  ).innerText = `Colonne nombre de prêts de l'année ${currentYear} :`;
+  ).innerText = `Colonne « Nombre de prêts de l'année ${currentYear} » :`;
   document.querySelector(
     "#columnN1Label"
-  ).innerText = `Colonne nombre de prêts de l'année ${currentYear - 1} :`;
+  ).innerText = `Colonne « Nombre de prêts de l'année ${currentYear - 1} » :`;
   // TODO : ajouter une message pour rappeler de changer également la lettre de la colonne.
 }
 
@@ -85,8 +85,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  const yearTypeElts = document.querySelectorAll(".cadre-choice input");
+  yearTypeElts.forEach((element) => {
+    element.addEventListener("change", (e) => {
+      let label = document.querySelector("#yearLabel");
+      switch (e.currentTarget.id) {
+        case "yearPublish":
+          label.innerText = "Colonne « Publié le » : ";
+          break;
+        case "yearAcq":
+          label.innerText = "Colonne « Date de saisie » : ";
+          break;
+      }
+    });
+  });
+
   const yearOptionToggler = document.querySelector("#showYearOptions");
-  // Masque/Affiche menu options type de date
+  // Gestion affichage menu options type de date
   yearOptionToggler.addEventListener("click", (e) => {
     let toggler = e.currentTarget;
     let target = document.querySelector(`#${toggler.dataset.target}`);
