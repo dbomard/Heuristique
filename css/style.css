@@ -127,3 +127,17 @@
   clip-path: polygon(0 50%, 50% 0, 100% 50%, 100% 60%, 50% 20%, 0 60%);
   transition: clip-path 300ms;
 }
+
+.changed {
+  border: #dd0000 solid 2px;
+  background-color: #dd000022;
+}
+
+.warning {
+  margin-left: .5rem;
+  color: #dd0000;
+}
+
+.hidden {
+  display: none;
+}

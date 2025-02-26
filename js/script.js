@@ -46,7 +46,6 @@ function updateDates() {
   document.querySelector(
     "#columnN1Label"
   ).innerText = `Colonne « Nombre de prêts de l'année ${currentYear - 1} » :`;
-  // TODO : ajouter une message pour rappeler de changer également la lettre de la colonne.
 }
 
 /**
@@ -68,6 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
       currentYearInput.value = maxYear;
     } else if (currentYear < maxYear - 2) {
       currentYearInput.value = maxYear - 2;
+    } else {
+      let columnN0 = document.querySelector("#columnN0");
+      columnN0.classList.add("changed");
+      columnN0.nextElementSibling.classList.remove("hidden");
+      let columnN1 = document.querySelector("#columnN1");
+      columnN1.classList.add("changed");
+      columnN1.nextElementSibling.classList.remove("hidden");
     }
     updateDates();
   });
@@ -117,9 +123,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const columns = document.querySelectorAll(".entry");
-  columns.forEach((element) =>
-    element.addEventListener("change", updateformula)
-  );
+  columns.forEach((element) => {
+    element.addEventListener("change", updateformula);
+    let id = element.id;
+    if (id == "columnN0" || id == "columnN1") {
+      element.addEventListener("click", (e) => {
+        let element = e.currentTarget;
+        element.classList.remove("changed");
+        element.nextElementSibling.classList.add("hidden");
+      });
+    }
+  });
   updateformula();
   const copyBtn = document.querySelector("#copy");
   copyBtn.addEventListener("click", copyToClipboard);
