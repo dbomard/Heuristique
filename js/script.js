@@ -9,12 +9,13 @@ function updateformula() {
   const recordYear = document.querySelector("#recordYear");
   const nextYear = parseInt(new Date().getFullYear()) + 1;
   const defaultPublishYear = document.querySelector("#yearMissing").value;
+  const defaultLoanYear = document.querySelector("#lastLoanMissing").value;
 
   const formula = document.querySelector("#formula");
   formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*1`;
   formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*0,5`;
   formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
-  formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";2000;${lastLoan.value}2)))`;
+  formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";${defaultLoanYear};${lastLoan.value}2)))`;
   formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
 }
 
@@ -86,6 +87,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let yearElement = e.target;
     if (yearElement.value < 1800) {
       yearElement.value = 1800;
+    } else if (yearElement.value > yearMax) {
+      yearElement.value = yearMax;
+    }
+  });
+
+  const lastLoanMissing = document.querySelector("#lastLoanMissing");
+  lastLoanMissing.max = new Date().getFullYear();
+  // gestionnaire de choix de la date de dernière année de prêt par défaut si non renseignée
+  lastLoanMissing.addEventListener("change", (e) => {
+    let yearMax = new Date().getFullYear();
+    let yearElement = e.target;
+    if (yearElement.value < 1970) {
+      yearElement.value = 1970;
     } else if (yearElement.value > yearMax) {
       yearElement.value = yearMax;
     }
