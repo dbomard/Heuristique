@@ -106,21 +106,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const yearOptionToggler = document.querySelector("#showYearOptions");
-  // Gestion affichage menu options type de date
-  yearOptionToggler.addEventListener("click", (e) => {
-    let toggler = e.currentTarget;
-    let target = document.querySelector(`#${toggler.dataset.target}`);
-    if (toggler.classList.contains("arrow-down")) {
-      toggler.classList.remove("arrow-down");
-      toggler.classList.add("arrow-up");
-      target.classList.remove("cadre-folded");
-    } else {
-      toggler.classList.remove("arrow-up");
-      toggler.classList.add("arrow-down");
-      target.classList.add("cadre-folded");
-    }
-  });
+  // const yearOptionToggler = document.querySelector("#showYearOptions");
+  // // Gestion affichage menu options type de date
+  // yearOptionToggler.addEventListener("click", (e) => {
+  //   let toggler = e.currentTarget;
+  //   let target = document.querySelector(`#${toggler.dataset.target}`);
+  //   if (toggler.classList.contains("arrow-down")) {
+  //     toggler.classList.remove("arrow-down");
+  //     toggler.classList.add("arrow-up");
+  //     target.classList.remove("cadre-folded");
+  //   } else {
+  //     toggler.classList.remove("arrow-up");
+  //     toggler.classList.add("arrow-down");
+  //     target.classList.add("cadre-folded");
+  //   }
+  // });
 
   const columns = document.querySelectorAll(".entry");
   columns.forEach((element) => {
