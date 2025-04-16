@@ -11,6 +11,17 @@
 
 <body>
     <main>
+        <datalist id="marks">
+            <option value="0" data-value="0"></option>
+            <option value="1" data-value="0.1"></option>
+            <option value="2" data-value="0.2"></option>
+            <option value="3" data-value="0.5"></option>
+            <option value="4" data-value="1"></option>
+            <option value="5" data-value="2"></option>
+            <option value="6" data-value="4"></option>
+            <option value="7" data-value="5"></option>
+            <option value="8" data-value="10"></option>
+        </datalist>
         <style>
         </style>
         <div>
@@ -28,8 +39,10 @@
                         <span class="hidden warning">← donnée à vérifier</span>
                     </div>
                     <div class="d-flex mt-3">
-                        <label for="columnN0Influence">Inflence :</label>
-                        <input type="range" name="columnN0Influence" id="columnN0Influence" min="0" max="10" step="1">
+                        <label for="columnN0Influence">Inflence : <span class="influence-text" id="influenceN0"> 1
+                            </span></label>
+                        <input type="range" name="columnN0Influence" id="columnN0Influence" value="4" min="0" max="8"
+                            list="marks">
                     </div>
                 </fieldset>
                 <fieldset class="mb-3">
@@ -40,8 +53,10 @@
                         <span class="hidden warning">← donnée à vérifier</span>
                     </div>
                     <div class="d-flex mt-3">
-                        <label for="columnN1Influence">Inflence :</label>
-                        <input type="range" name="columnN1Influence" id="columnN1Influence" min="0" max="10" step="1">
+                        <label for="columnN1Influence">Inflence : <span class="influence-text" id="influenceN1"> 1
+                            </span></label>
+                        <input type="range" name="columnN1Influence" id="columnN1Influence" min="0" max="8" value="4"
+                            list="marks">
                     </div>
                 </fieldset>
                 <fieldset class="mb-3">
@@ -71,8 +86,8 @@
                         </div>
                     </div>
                     <div class="d-flex mt-3">
-                        <label for="columnN1Influence">Inflence :</label>
-                        <input type="range" name="columnN1Influence" id="columnN1Influence" min="0" max="10" step="1">
+                        <label for="columnN2Influence">Inflence :</label>
+                        <input type="range" name="columnN2Influence" id="columnN2Influence" min="0" max="10" step="1">
                     </div>
                 </fieldset>
                 <fieldset class="mb-3">
@@ -87,8 +102,8 @@
                             id="lastLoanMissing" min="1970" />
                     </div>
                     <div class="d-flex mt-3">
-                        <label for="columnN1Influence">Inflence :</label>
-                        <input type="range" name="columnN1Influence" id="columnN1Influence" min="0" max="10" step="1">
+                        <label for="columnN3Influence">Inflence :</label>
+                        <input type="range" name="columnN3Influence" id="columnN3Influence" min="0" max="10" step="1">
                     </div>
                 </fieldset>
                 <fieldset>
@@ -98,8 +113,8 @@
                         <input data-index="5" class="form-control entry size-3" type="text" id="totalLoan" value="M" />
                     </div>
                     <div class="d-flex mt-3">
-                        <label for="columnN1Influence">Inflence :</label>
-                        <input type="range" name="columnN1Influence" id="columnN1Influence" min="0" max="10" step="1">
+                        <label for="columnN4Influence">Inflence :</label>
+                        <input type="range" name="columnN4Influence" id="columnN4Influence" min="0" max="10" step="1">
                     </div>
                 </fieldset>
             </section>
