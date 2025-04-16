@@ -10,10 +10,12 @@ function updateformula() {
   const nextYear = parseInt(new Date().getFullYear()) + 1;
   const defaultPublishYear = document.querySelector("#yearMissing").value;
   const defaultLoanYear = document.querySelector("#lastLoanMissing").value;
+  const influenceRangeN0 = document.querySelector("#influenceN0").innerText;
+  const influenceRangeN1 = document.querySelector("#influenceN1").innerText;
 
   const formula = document.querySelector("#formula");
-  formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*1`;
-  formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*0,5`;
+  formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*${influenceRangeN0}`;
+  formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*${influenceRangeN1}`;
   formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
   formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";${defaultLoanYear};${lastLoan.value}2)))`;
   formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
@@ -155,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = e.currentTarget.value;
     let marks = document.querySelectorAll(`#marks > option`);
     labelInfluence.innerText = marks[index].dataset.value;
+    updateformula();
   });
 
   const rangeN1 = document.querySelector("#columnN1Influence");
@@ -163,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = e.currentTarget.value;
     let marks = document.querySelectorAll(`#marks > option`);
     labelInfluence.innerText = marks[index].dataset.value;
+    updateformula();
   });
 
   updateformula();
