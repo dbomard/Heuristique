@@ -148,6 +148,23 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  const rangeN0 = document.querySelector("#columnN0Influence");
+  rangeN0.addEventListener("input", (e) => {
+    let labelInfluence = document.querySelector("#influenceN0");
+    let index = e.currentTarget.value;
+    let marks = document.querySelectorAll(`#marks > option`);
+    labelInfluence.innerText = marks[index].dataset.value;
+  });
+
+  const rangeN1 = document.querySelector("#columnN1Influence");
+  rangeN1.addEventListener("input", (e) => {
+    let labelInfluence = document.querySelector("#influenceN1");
+    let index = e.currentTarget.value;
+    let marks = document.querySelectorAll(`#marks > option`);
+    labelInfluence.innerText = marks[index].dataset.value;
+  });
+
   updateformula();
   const copyBtn = document.querySelector("#copy");
   copyBtn.addEventListener("click", copyToClipboard);
