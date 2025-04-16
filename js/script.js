@@ -10,8 +10,12 @@ function updateformula() {
   const nextYear = parseInt(new Date().getFullYear()) + 1;
   const defaultPublishYear = document.querySelector("#yearMissing").value;
   const defaultLoanYear = document.querySelector("#lastLoanMissing").value;
-  const influenceRangeN0 = document.querySelector("#influenceN0").innerText;
-  const influenceRangeN1 = document.querySelector("#influenceN1").innerText;
+  const influenceRangeN0 = document
+    .querySelector("#influenceN0")
+    .innerText.replace(".", ",");
+  const influenceRangeN1 = document
+    .querySelector("#influenceN1")
+    .innerText.replace(".", ",");
 
   const formula = document.querySelector("#formula");
   formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*${influenceRangeN0}`;
