@@ -100,7 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const lastLoanMissing = document.querySelector("#lastLoanMissing");
   lastLoanMissing.max = new Date().getFullYear();
-  // gestionnaire de choix de la date de dernière année de prêt par défaut si non renseignée
+  /**
+   * Gestion du choix de la date de dernière année de prêt par défaut si non renseignée
+   */
   lastLoanMissing.addEventListener("change", (e) => {
     let yearMax = new Date().getFullYear();
     let yearElement = e.target;
@@ -126,22 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // const yearOptionToggler = document.querySelector("#showYearOptions");
-  // // Gestion affichage menu options type de date
-  // yearOptionToggler.addEventListener("click", (e) => {
-  //   let toggler = e.currentTarget;
-  //   let target = document.querySelector(`#${toggler.dataset.target}`);
-  //   if (toggler.classList.contains("arrow-down")) {
-  //     toggler.classList.remove("arrow-down");
-  //     toggler.classList.add("arrow-up");
-  //     target.classList.remove("cadre-folded");
-  //   } else {
-  //     toggler.classList.remove("arrow-up");
-  //     toggler.classList.add("arrow-down");
-  //     target.classList.add("cadre-folded");
-  //   }
-  // });
-
   const columns = document.querySelectorAll(".entry");
   columns.forEach((element) => {
     element.addEventListener("change", updateformula);
@@ -156,6 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const rangeN0 = document.querySelector("#columnN0Influence");
+  /**
+   * Calcul de l'influence de la colonne "Nombre de prêts N"
+   */
   rangeN0.addEventListener("input", (e) => {
     let labelInfluence = document.querySelector("#influenceN0");
     let value = parseInt(e.currentTarget.value);
@@ -169,6 +158,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const rangeN1 = document.querySelector("#columnN1Influence");
+  /**
+   * Calcul de l'influence de la colonne "Nombre de prêts N-1"
+   */
   rangeN1.addEventListener("input", (e) => {
     let labelInfluence = document.querySelector("#influenceN1");
     let value = e.currentTarget.value;
@@ -180,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     labelInfluence.innerText = value.toString();
     updateformula();
   });
+
 
   updateformula();
   const copyBtn = document.querySelector("#copy");
