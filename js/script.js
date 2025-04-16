@@ -158,18 +158,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const rangeN0 = document.querySelector("#columnN0Influence");
   rangeN0.addEventListener("input", (e) => {
     let labelInfluence = document.querySelector("#influenceN0");
-    let index = e.currentTarget.value;
-    let marks = document.querySelectorAll(`#marks > option`);
-    labelInfluence.innerText = marks[index].dataset.value;
+    let value = parseInt(e.currentTarget.value);
+    if (value >= 10) {
+      value -= 9;
+    } else {
+      value = value / 10;
+    }
+    labelInfluence.innerText = value.toString();
     updateformula();
   });
 
   const rangeN1 = document.querySelector("#columnN1Influence");
   rangeN1.addEventListener("input", (e) => {
     let labelInfluence = document.querySelector("#influenceN1");
-    let index = e.currentTarget.value;
-    let marks = document.querySelectorAll(`#marks > option`);
-    labelInfluence.innerText = marks[index].dataset.value;
+    let value = e.currentTarget.value;
+    if (value >= 10) {
+      value -= 9;
+    } else {
+      value = value / 10;
+    }
+    labelInfluence.innerText = value.toString();
     updateformula();
   });
 
