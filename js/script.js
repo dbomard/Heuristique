@@ -16,12 +16,14 @@ function updateformula() {
   const influenceRangeN1 = document
     .querySelector("#influenceN1")
     .innerText.replace(".", ",");
+  const influenceRangeN2 = document.querySelector("#influenceN2").innerText;
+  const influenceRangeN3 = document.querySelector("#influenceN3").innerText;
 
   const formula = document.querySelector("#formula");
   formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*${influenceRangeN0}`;
   formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*${influenceRangeN1}`;
-  formula.children[2].innerText = `(50/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
-  formula.children[3].innerText = `(20/(${nextYear}-SI(${lastLoan.value}2="";${defaultLoanYear};${lastLoan.value}2)))`;
+  formula.children[2].innerText = `(${influenceRangeN2}/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
+  formula.children[3].innerText = `(${influenceRangeN3}/(${nextYear}-SI(${lastLoan.value}2="";${defaultLoanYear};${lastLoan.value}2)))`;
   formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
 }
 
@@ -173,6 +175,36 @@ document.addEventListener("DOMContentLoaded", () => {
     updateformula();
   });
 
+  const rangeN2 = document.querySelector("#columnN2Influence");
+  /**
+   * Calcul de l'influence de la colonne "Publié le"
+   */
+  rangeN2.addEventListener("input", (e) => {
+    let labelInfluence = document.querySelector("#influenceN2");
+    let value = e.currentTarget.value;
+    labelInfluence.innerText = value.toString();
+    updateformula();
+  });
+
+  const rangeN3 = document.querySelector("#columnN3Influence");
+  /**
+   * Calcul de l'influence de la colonne "Dernière année de prêt"
+   */
+  rangeN3.addEventListener("input", (e) => {
+    let labelInfluence = document.querySelector("#influenceN3");
+    let value = e.currentTarget.value;
+    labelInfluence.innerText = value.toString();
+    updateformula();
+  });
+
+  const resetBtns = document.querySelectorAll(".reset-icon");
+  resetBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      let input = e.currentTarget.previousElementSibling;
+      input.value = input.dataset.defaultValue;
+      input.dispatchEvent(new Event("input"));
+    });
+  });
 
   updateformula();
   const copyBtn = document.querySelector("#copy");

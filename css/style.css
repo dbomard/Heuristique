@@ -146,12 +146,23 @@
   display: none;
 }
 
-.influence-text{
+.influence-text {
   display: inline-flex;
   justify-content: center;
   border: solid 1px;
   border-radius: 3px;
   padding: 0 5px;
-  margin:0 5px;
+  margin: 0 5px;
   width: 1.5em;
+}
+
+.reset-icon {
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  padding: 5px;
+}
+
+.reset-icon:hover {
+  cursor: pointer;
 }
