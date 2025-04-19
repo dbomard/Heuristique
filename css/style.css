@@ -220,7 +220,7 @@ input[type="range"]::-moz-range-thumb{
 
 .bubble{
   position: absolute;
-  top:2.3em;
+  top:-1.65em;
   background: var(--bg-color);
   width: 2em;
   height: 1.5em;
