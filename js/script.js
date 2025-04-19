@@ -159,22 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateformula();
   });
 
-  const rangeN1 = document.querySelector("#columnN1Influence");
-  /**
-   * Calcul de l'influence de la colonne "Nombre de prêts N-1"
-   */
-  rangeN1.addEventListener("input", (e) => {
-    let labelInfluence = document.querySelector("#influenceN1");
-    let value = e.currentTarget.value;
-    if (value >= 10) {
-      value -= 9;
-    } else {
-      value = value / 10;
-    }
-    labelInfluence.innerText = value.toString();
-    updateformula();
-  });
-
   const rangeN2 = document.querySelector("#columnN2Influence");
   /**
    * Calcul de l'influence de la colonne "Publié le"
@@ -242,4 +226,32 @@ document.addEventListener("DOMContentLoaded", () => {
       element.classList.remove(`hover-formula-style${indice}`);
     });
   }
+
+  const rangeN1 = document.querySelector("#columnN1Influence");
+  // rangeN1.addEventListener("input", (e) => {
+  //   let labelInfluence = document.querySelector("#influenceN1");
+  //   let value = e.currentTarget.value;
+  //   if (value >= 10) {
+  //     value -= 9;
+  //   } else {
+  //     value = value / 10;
+  //   }
+  //   labelInfluence.innerText = value.toString();
+  //   updateformula();
+  // });
+  /**
+   * Calcul de l'influence de la colonne "Nombre de prêts N-1"
+   */
+  rangeN1.addEventListener("input", (e) => {
+    let bubble = document.querySelector(".bubble");
+    let range = document.querySelector(".range");
+    let value = e.currentTarget.value;
+    bubble.style.left = `calc(${value}% - ${bubble.getBoundingClientRect().width-3}px)`;
+    let percent = Math.round((value * 256) / 100);
+    bubble.querySelector("p").innerText = percent;
+    let color = `rgb(${percent}, 0, ${256 - percent})`;
+    range.style.setProperty("--bg-color", color);
+  });
+
+  rangeN1.dispatchEvent(new Event("input"));
 });

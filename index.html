@@ -44,8 +44,10 @@
                     <div class="d-flex mt-3">
                         <label for="columnN1Influence">Coefficient : <span class="influence-text" id="influenceN1"> 0.5
                             </span></label>
-                        <input type="range" name="columnN1Influence" id="columnN1Influence" min="0" max="19" value="5"
-                            step="1" data-default-value="5">
+                        <div class="range">
+                            <input type="range" name="columnN1Influence" id="columnN1Influence" data-default-value="5">
+                                <div class="bubble"><p></p></div>
+                        </div>
                         <span class="reset-icon" title="rétablir la valeur par défaut">&#10227</span>
                     </div>
                 </fieldset>
@@ -107,7 +109,8 @@
                     </div>
                     <div class="d-flex mt-3">
                         <label for="columnN4Influence">Inflence :</label>
-                        <input type="range" name="columnN4Influence" id="columnN4Influence" min="0" max="10" step="1" data-default-value="1">
+                        <input type="range" name="columnN4Influence" id="columnN4Influence" min="0" max="10" step="1"
+                            data-default-value="1">
                         <span class="reset-icon" title="rétablir la valeur par défaut">&#10227</span>
                     </div>
                 </fieldset>
