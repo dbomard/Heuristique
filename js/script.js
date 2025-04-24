@@ -10,18 +10,18 @@ function updateformula() {
   const nextYear = parseInt(new Date().getFullYear()) + 1;
   const defaultPublishYear = document.querySelector("#yearMissing").value;
   const defaultLoanYear = document.querySelector("#lastLoanMissing").value;
-  const influenceRangeN0 = document
-    .querySelector("#influenceN0")
-    .innerText.replace(".", ",");
-  const influenceRangeN1 = document
-    .querySelector("#influenceN1")
-    .innerText.replace(".", ",");
+  // const influenceRangeN0 = document
+  //   .querySelector("#influenceN0")
+  //   .innerText.replace(".", ",");
+  // const influenceRangeN1 = document
+  //   .querySelector("#influenceN1")
+  //   .innerText.replace(".", ",");
   const influenceRangeN2 = document.querySelector("#influenceN2").innerText;
   const influenceRangeN3 = document.querySelector("#influenceN3").innerText;
 
   const formula = document.querySelector("#formula");
-  formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*${influenceRangeN0}`;
-  formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*${influenceRangeN1}`;
+  // formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*${influenceRangeN0}`;
+  // formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*${influenceRangeN1}`;
   formula.children[2].innerText = `(${influenceRangeN2}/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
   formula.children[3].innerText = `(${influenceRangeN3}/(${nextYear}-SI(${lastLoan.value}2="";${defaultLoanYear};${lastLoan.value}2)))`;
   formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
@@ -143,22 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const rangeN0 = document.querySelector("#columnN0Influence");
-  /**
-   * Calcul de l'influence de la colonne "Nombre de prêts N"
-   */
-  rangeN0.addEventListener("input", (e) => {
-    let labelInfluence = document.querySelector("#influenceN0");
-    let value = parseInt(e.currentTarget.value);
-    if (value >= 10) {
-      value -= 9;
-    } else {
-      value = value / 10;
-    }
-    labelInfluence.innerText = value.toString();
-    updateformula();
-  });
-
   const rangeN2 = document.querySelector("#columnN2Influence");
   /**
    * Calcul de l'influence de la colonne "Publié le"
@@ -227,32 +211,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const rangeN1 = document.querySelector("#columnN1Influence");
-  // rangeN1.addEventListener("input", (e) => {
-  //   let labelInfluence = document.querySelector("#influenceN1");
-  //   let value = e.currentTarget.value;
-  //   if (value >= 10) {
-  //     value -= 9;
-  //   } else {
-  //     value = value / 10;
-  //   }
-  //   labelInfluence.innerText = value.toString();
-  //   updateformula();
-  // });
-  /**
-   * Calcul de l'influence de la colonne "Nombre de prêts N-1"
-   */
-  rangeN1.addEventListener("input", (e) => {
-    let bubble = document.querySelector(".bubble");
-    let range = document.querySelector(".range");
-    let value = e.currentTarget.value;
-    let bubbleWidth = bubble.getBoundingClientRect().width;
-    bubble.style.left = `calc(${value}% - ${(bubbleWidth-3)*value/100}px)`;
-    let percent = Math.round((value * 256) / 100);
-    bubble.querySelector("p").innerText = percent;
-    let color = `rgb(${percent}, 0, ${256 - percent})`;
-    range.style.setProperty("--bg-color", color);
-  });
+  const ranges = document.querySelectorAll(".range");
+  ranges.forEach((range) => {
+    let inputRange = range.querySelector("input[type='range']");
+    inputRange.addEventListener("input", (e) => {
+      let currentRange = e.currentTarget.parentElement;
+      let bubble = currentRange.querySelector(".bubble");
+      let value = e.currentTarget.value;
+      let influence = parseInt(value);
+      switch (e.currentTarget.id) {
+        case "columnN0Influence":
+        case "columnN1Influence":
+          if (influence >= 50) {
+            influence = 10 - Math.ceil((100 - influence) / 6);
+          } else {
+            influence = Math.floor(influence / 5) / 10;
+          }
+          break;
 
-  rangeN1.dispatchEvent(new Event("input"));
+        default:
+          break;
+      }
+      let bubbleWidth = bubble.getBoundingClientRect().width;
+      bubble.style.left = `calc(${value}% - ${
+        ((bubbleWidth - 3) * value) / 100
+      }px)`;
+      let percent = Math.round((value * 256) / 100);
+      bubble.querySelector("p").innerText = influence.toString();
+      let color = `rgb(${percent}, 0, ${256 - percent})`;
+      bubble.style.setProperty("--bg-color", color);
+      range.style.setProperty("--bg-color", color);
+    });
+    inputRange.dispatchEvent(new Event("input"));
+  });
 });
