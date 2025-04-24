@@ -143,28 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // const rangeN2 = document.querySelector("#columnN2Influence");
-  // /**
-  //  * Calcul de l'influence de la colonne "Publié le"
-  //  */
-  // rangeN2.addEventListener("input", (e) => {
-  //   let labelInfluence = document.querySelector("#influenceN2");
-  //   let value = e.currentTarget.value;
-  //   labelInfluence.innerText = value.toString();
-  //   updateformula();
-  // });
-
-  // const rangeN3 = document.querySelector("#columnN3Influence");
-  // /**
-  //  * Calcul de l'influence de la colonne "Dernière année de prêt"
-  //  */
-  // rangeN3.addEventListener("input", (e) => {
-  //   let labelInfluence = document.querySelector("#influenceN3");
-  //   let value = e.currentTarget.value;
-  //   labelInfluence.innerText = value.toString();
-  //   updateformula();
-  // });
-
   const resetBtns = document.querySelectorAll(".reset-icon");
   resetBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -213,6 +191,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /**
+   * Gestionnaire de changement de la valeur des curseurs d'influence
+   * et mise à jour de la bulle d'influence
+   */
   const ranges = document.querySelectorAll(".range");
   ranges.forEach((range) => {
     let inputRange = range.querySelector("input[type='range']");
