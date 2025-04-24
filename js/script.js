@@ -168,7 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetBtns = document.querySelectorAll(".reset-icon");
   resetBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      let input = e.currentTarget.previousElementSibling;
+      let input = e.currentTarget.previousElementSibling.querySelector(
+        "input[type='range']"
+      );
       input.value = input.dataset.defaultValue;
       input.dispatchEvent(new Event("input"));
     });
