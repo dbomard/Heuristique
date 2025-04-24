@@ -27,10 +27,13 @@
                         <span class="hidden warning">← donnée à vérifier</span>
                     </div>
                     <div class="d-flex mt-3">
-                        <label for="columnN0Influence">Coefficient : <span class="influence-text" id="influenceN0"> 1
-                            </span></label>
-                        <input type="range" name="columnN0Influence" id="columnN0Influence" value="10" min="0" max="19"
-                            step="1" data-default-value="10">
+                        <label for="columnN0Influence">Coefficient : </label>
+                        <div class="range">
+                            <input type="range" name="columnN0Influence" id="columnN0Influence" data-default-value="10">
+                            <div class="bubble">
+                                <p></p>
+                            </div>
+                        </div>
                         <span class="reset-icon" title="rétablir la valeur par défaut">&#10227</span>
                     </div>
                 </fieldset>
@@ -42,11 +45,12 @@
                         <span class="hidden warning">← donnée à vérifier</span>
                     </div>
                     <div class="d-flex mt-3">
-                        <label for="columnN1Influence">Coefficient : <span class="influence-text" id="influenceN1"> 0.5
-                            </span></label>
+                        <label for="columnN1Influence">Coefficient : </label>
                         <div class="range">
                             <input type="range" name="columnN1Influence" id="columnN1Influence" data-default-value="5">
-                                <div class="bubble"><p></p></div>
+                            <div class="bubble">
+                                <p></p>
+                            </div>
                         </div>
                         <span class="reset-icon" title="rétablir la valeur par défaut">&#10227</span>
                     </div>
