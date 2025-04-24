@@ -143,16 +143,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const rangeN2 = document.querySelector("#columnN2Influence");
-  /**
-   * Calcul de l'influence de la colonne "Publié le"
-   */
-  rangeN2.addEventListener("input", (e) => {
-    let labelInfluence = document.querySelector("#influenceN2");
-    let value = e.currentTarget.value;
-    labelInfluence.innerText = value.toString();
-    updateformula();
-  });
+  // const rangeN2 = document.querySelector("#columnN2Influence");
+  // /**
+  //  * Calcul de l'influence de la colonne "Publié le"
+  //  */
+  // rangeN2.addEventListener("input", (e) => {
+  //   let labelInfluence = document.querySelector("#influenceN2");
+  //   let value = e.currentTarget.value;
+  //   labelInfluence.innerText = value.toString();
+  //   updateformula();
+  // });
 
   const rangeN3 = document.querySelector("#columnN3Influence");
   /**
@@ -230,6 +230,9 @@ document.addEventListener("DOMContentLoaded", () => {
             influence = Math.floor(influence / 5) / 10;
           }
           break;
+        case "columnN2Influence":
+        case "columnN3Influence":
+          influence = influence - (influence % 10);
 
         default:
           break;
