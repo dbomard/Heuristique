@@ -168,7 +168,7 @@
 }
 
 .range{
-  --bg-color : rgb(50, 0%, 50%);
+  --bg-color : rgb(50%, 0%, 50%);
   position: relative;
 }
 
@@ -219,6 +219,7 @@ input[type="range"]::-moz-range-thumb{
 }
 
 .bubble{
+  --bg-color : rgb(50%, 0%, 50%);
   position: absolute;
   top:-1.65em;
   background: var(--bg-color);
