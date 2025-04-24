@@ -10,18 +10,18 @@ function updateformula() {
   const nextYear = parseInt(new Date().getFullYear()) + 1;
   const defaultPublishYear = document.querySelector("#yearMissing").value;
   const defaultLoanYear = document.querySelector("#lastLoanMissing").value;
-  // const influenceRangeN0 = document
-  //   .querySelector("#influenceN0")
-  //   .innerText.replace(".", ",");
-  // const influenceRangeN1 = document
-  //   .querySelector("#influenceN1")
-  //   .innerText.replace(".", ",");
+  const influenceRangeN0 = document
+    .querySelector("#influenceN0")
+    .innerText.replace(".", ",");
+  const influenceRangeN1 = document
+    .querySelector("#influenceN1")
+    .innerText.replace(".", ",");
   const influenceRangeN2 = document.querySelector("#influenceN2").innerText;
   const influenceRangeN3 = document.querySelector("#influenceN3").innerText;
 
   const formula = document.querySelector("#formula");
-  // formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*${influenceRangeN0}`;
-  // formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*${influenceRangeN1}`;
+  formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*${influenceRangeN0}`;
+  formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*${influenceRangeN1}`;
   formula.children[2].innerText = `(${influenceRangeN2}/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
   formula.children[3].innerText = `(${influenceRangeN3}/(${nextYear}-SI(${lastLoan.value}2="";${defaultLoanYear};${lastLoan.value}2)))`;
   formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
@@ -243,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let color = `rgb(${percent}, 0, ${256 - percent})`;
       bubble.style.setProperty("--bg-color", color);
       range.style.setProperty("--bg-color", color);
+      updateformula();
     });
     inputRange.dispatchEvent(new Event("input"));
   });
