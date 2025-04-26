@@ -97,6 +97,7 @@
                     <div class="d-flex mb-3"><label for="lastLoan" class="form-label">Colonne :</label>
                         <input data-index="4" class="form-control entry size-3" type="text" id="lastLoan" value="H" />
                     </div>
+
                     <div class="d-flex">
                         <label for="lastLoanMissing" class="form-label">Année retenue en cas de donnée absente :
                         </label>
@@ -123,8 +124,13 @@
                     </div>
                     <div class="d-flex mt-3">
                         <label for="columnN4Influence">Inflence :</label>
-                        <input type="range" name="columnN4Influence" id="columnN4Influence" min="0" max="10" step="1"
-                            data-default-value="1">
+                        <div class="range">
+                            <input type="range" name="columnN4Influence" id="columnN4Influence" value="50"
+                                data-default-value="50">
+                            <div class="bubble">
+                                <p id="influenceN4"></p>
+                            </div>
+                        </div>
                         <span class="reset-icon" title="rétablir la valeur par défaut">&#10227</span>
                     </div>
                 </fieldset>

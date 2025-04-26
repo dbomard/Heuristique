@@ -18,13 +18,16 @@ function updateformula() {
     .innerText.replace(".", ",");
   const influenceRangeN2 = document.querySelector("#influenceN2").innerText;
   const influenceRangeN3 = document.querySelector("#influenceN3").innerText;
+  const influenceRangeN4 = document
+    .querySelector("#influenceN4")
+    .innerText.replace(".", ",");
 
   const formula = document.querySelector("#formula");
   formula.children[0].innerText = `SI(${columnN0.value}2="";0;${columnN0.value}2)*${influenceRangeN0}`;
   formula.children[1].innerText = `SI(${columnN1.value}2="";0;${columnN1.value}2)*${influenceRangeN1}`;
   formula.children[2].innerText = `(${influenceRangeN2}/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
   formula.children[3].innerText = `(${influenceRangeN3}/(${nextYear}-SI(${lastLoan.value}2="";${defaultLoanYear};${lastLoan.value}2)))`;
-  formula.children[4].innerText = `(${totalLoan.value}2/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
+  formula.children[4].innerText = `(${totalLoan.value}2*${influenceRangeN4}/(${nextYear}-SI(${recordYear.value}2="";${defaultPublishYear};${recordYear.value}2)))`;
 }
 
 /**
@@ -215,7 +218,13 @@ document.addEventListener("DOMContentLoaded", () => {
         case "columnN2Influence":
         case "columnN3Influence":
           influence = influence - (influence % 10);
+          break;
         default:
+          if (influence >= 50) {
+            influence = 3 - Math.ceil((100 - influence) / 25);
+          } else {
+            influence = Math.floor((influence * 4) / 100) / 2;
+          }
           break;
       }
       let bubbleWidth = bubble.getBoundingClientRect().width;
