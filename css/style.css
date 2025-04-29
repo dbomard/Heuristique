@@ -234,6 +234,21 @@ input[type="range"]::-moz-range-thumb {
   font-weight: bold;
 }
 
-.hidden{
+.hidden {
   display: none;
+}
+
+fieldset {
+  border: none;
+  border-top: #505050 solid 1.5em;
+  border-radius: 7px;
+  box-shadow: 0px 0px 10px 0px #83838369;
+  position: relative;
+}
+
+fieldset > legend {
+  position: absolute;
+  top: -1.4em;
+  color: white;
+  font-weight: bold;
 }
