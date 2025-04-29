@@ -244,11 +244,14 @@ fieldset {
   border-radius: 7px;
   box-shadow: 0px 0px 10px 0px #83838369;
   position: relative;
+  padding-left: 1em;
 }
 
 fieldset > legend {
   position: absolute;
-  top: -1.4em;
+  top: -1.3em;
   color: white;
   font-weight: bold;
+  font-size: initial;
+  margin-left: 1em;
 }
