@@ -240,4 +240,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     inputRange.dispatchEvent(new Event("input"));
   });
+
+  // Gestionnaire de la case "options avancées"
+  const advancedOptions = document.querySelector("#advanced-options");
+  advancedOptions.addEventListener("change", (e) => {
+    let advancedOptionsDiv = document.querySelectorAll(".options");
+    if (e.currentTarget.checked) {
+      advancedOptionsDiv.forEach((div) => {
+        div.classList.remove("hidden");
+      });
+    } else {
+      advancedOptionsDiv.forEach((div) => {
+        div.classList.add("hidden");
+      });
+    }
+  });
 });
