@@ -56,6 +56,10 @@
   margin-top: 1em;
 }
 
+.mt-2em{
+  margin-top: 2em;
+}
+
 .entry {
   margin-left: 1em;
   text-align: center;
@@ -232,10 +236,6 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   color: white;
   font-weight: bold;
-}
-
-.hidden {
-  display: none;
 }
 
 fieldset {

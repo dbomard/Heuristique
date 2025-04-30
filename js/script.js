@@ -255,4 +255,5 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+  advancedOptions.dispatchEvent(new Event("change"));
 });
