@@ -56,7 +56,7 @@
   margin-top: 1em;
 }
 
-.mt-2em{
+.mt-2em {
   margin-top: 2em;
 }
 
@@ -216,8 +216,8 @@ input[type="range"]::-moz-range-thumb {
   appearance: none;
   background-color: var(--bg-color);
   border-radius: 50%;
-  width: 2em;
-  height: 2em;
+  width: 1em;
+  height: 1em;
   border: solid 0.5em white;
   box-shadow: 0px 0px 25px 0px #083d5455;
 }
